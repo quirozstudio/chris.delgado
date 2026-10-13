@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <main className="site-shell">
       <section id="top" className="hero">
-        <motion.img className="hero-image" src="/images/hero-editorial.png" alt="Pareja abrazada junto a una ventana en un interior de luz suave" initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 1.06, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1.6, ease }} />
+        <motion.img className="hero-image" src="/images/hero-editorial.png" alt="Pareja abrazada junto a una ventana en un interior de luz suave" initial={prefersReducedMotion ? { scale: 1, opacity: 1, clipPath: 'inset(0)' } : { scale: 1.08, opacity: 0, clipPath: 'inset(0 100% 0 0)' }} animate={{ scale: 1, opacity: 1, clipPath: 'inset(0)' }} transition={{ duration: 1.7, ease }} />
         <div className="hero-overlay" aria-hidden="true" />
         <header className="site-header">
           <button className="wordmark" onClick={() => goTo('top')} aria-label="Volver al inicio">CD<span>.</span></button>
@@ -31,10 +31,11 @@ function App() {
         </header>
         <AnimatePresence>{menuOpen && <motion.nav className="mobile-menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} aria-label="Menú móvil"><button onClick={() => goTo('about')}>Sobre Chris</button><button onClick={() => goTo('works')}>Trabajos</button><button onClick={() => goTo('contact')}>Contacto</button></motion.nav>}</AnimatePresence>
         <div className="hero-content">
-          <motion.div initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .45, duration: .8 }} className="eyebrow light">Photography / Film / Direction</motion.div>
-          <motion.h1 initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .5, duration: 1, ease }}>Chris<br /><em>Delgado</em></motion.h1>
-          <motion.div initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: .8 }} className="hero-footer"><span>Una mirada honesta<br />sobre lo que importa.</span><button onClick={() => goTo('about')} className="scroll-cue"><span>Scroll</span><ArrowDown size={14} strokeWidth={1} /></button></motion.div>
+          <motion.div initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .42, duration: .8, ease }} className="hero-kicker">Photography <span>/</span> Film <span>/</span> Direction</motion.div>
+          <motion.h1 initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 38 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .55, duration: 1.05, ease }}>Chris<br /><em>Delgado</em></motion.h1>
+          <motion.div initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1, duration: .8, ease }} className="hero-subtitle"><span />Visual stories with intention</motion.div>
         </div>
+        <motion.div initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.15, duration: .8 }} className="hero-bottom"><span>Based in Spain / Available worldwide</span><button onClick={() => goTo('about')} className="scroll-cue" aria-label="Descubrir el trabajo de Chris Delgado"><span>Explore</span><span className="scroll-cue-line" /></button></motion.div>
       </section>
 
       <section id="services" className="services-section">
