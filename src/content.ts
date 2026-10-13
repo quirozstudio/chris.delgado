@@ -1,9 +1,11 @@
+const imagePath = (fileName: string) => new URL(`images/${fileName}`, document.baseURI).toString()
+
 export const works = [
   {
     number: '01',
     title: 'La luz, tal como llega',
     category: 'Fotografía editorial',
-    image: '/images/hero-editorial.png',
+    image: imagePath('hero-editorial.png'),
     alt: 'Pareja abrazada junto a una ventana en un interior de luz suave',
     aspect: 'landscape',
   },
@@ -11,7 +13,7 @@ export const works = [
     number: '02',
     title: 'Una forma de mirar',
     category: 'Retrato',
-    image: '/images/portrait-editorial.png',
+    image: imagePath('portrait-editorial.png'),
     alt: 'Retrato editorial de una mujer con luz lateral suave',
     aspect: 'portrait',
   },
@@ -19,7 +21,7 @@ export const works = [
     number: '03',
     title: 'El gesto que permanece',
     category: 'Detalle documental',
-    image: '/images/detail-editorial.png',
+    image: imagePath('detail-editorial.png'),
     alt: 'Dos manos tocándose junto a una ventana',
     aspect: 'portrait',
   },

@@ -3,11 +3,12 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 
 const ease = [0.22, 1, 0.36, 1] as const
+const imagePath = (fileName: string) => new URL(`images/${fileName}`, document.baseURI).toString()
 
 const works = [
-  { number: '01', title: 'La luz, tal como llega', category: 'Editorial / Film', image: '/images/hero-editorial.png', alt: 'Pareja abrazada junto a una ventana en un interior de luz suave', layout: 'wide' },
-  { number: '02', title: 'Una forma de mirar', category: 'Portraits', image: '/images/portrait-editorial.png', alt: 'Retrato editorial de una mujer con luz lateral suave', layout: 'portrait' },
-  { number: '03', title: 'El gesto que permanece', category: 'Documentary', image: '/images/detail-editorial.png', alt: 'Dos manos tocándose junto a una ventana', layout: 'portrait' },
+  { number: '01', title: 'La luz, tal como llega', category: 'Editorial / Film', image: imagePath('hero-editorial.png'), alt: 'Pareja abrazada junto a una ventana en un interior de luz suave', layout: 'wide' },
+  { number: '02', title: 'Una forma de mirar', category: 'Portraits', image: imagePath('portrait-editorial.png'), alt: 'Retrato editorial de una mujer con luz lateral suave', layout: 'portrait' },
+  { number: '03', title: 'El gesto que permanece', category: 'Documentary', image: imagePath('detail-editorial.png'), alt: 'Dos manos tocándose junto a una ventana', layout: 'portrait' },
 ] as const
 
 function scrollToId(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
@@ -22,7 +23,7 @@ function App() {
   return (
     <main className="site-shell">
       <section id="top" className="hero">
-        <motion.img className="hero-image" src="/images/hero-editorial.png" alt="Pareja abrazada junto a una ventana en un interior de luz suave" initial={prefersReducedMotion ? { scale: 1, opacity: 1, clipPath: 'inset(0)' } : { scale: 1.08, opacity: 0, clipPath: 'inset(0 100% 0 0)' }} animate={{ scale: 1, opacity: 1, clipPath: 'inset(0)' }} transition={{ duration: 1.7, ease }} />
+        <motion.img className="hero-image" src={imagePath('hero-editorial.png')} alt="Pareja abrazada junto a una ventana en un interior de luz suave" initial={prefersReducedMotion ? { scale: 1, opacity: 1, clipPath: 'inset(0)' } : { scale: 1.08, opacity: 0, clipPath: 'inset(0 100% 0 0)' }} animate={{ scale: 1, opacity: 1, clipPath: 'inset(0)' }} transition={{ duration: 1.7, ease }} />
         <div className="hero-overlay" aria-hidden="true" />
         <header className="site-header">
           <button className="wordmark" onClick={() => goTo('top')} aria-label="Volver al inicio">CD<span>.</span></button>
@@ -51,7 +52,7 @@ function App() {
       <section id="about" className="about-section section-pad"><div className="container">
         <SectionLabel>02 / Sobre Chris</SectionLabel>
         <div className="about-grid"><motion.div {...reveal} transition={{ duration: .9, ease }}><h2 className="display-heading">Fotografía con<br /><em>intención.</em></h2></motion.div><motion.div {...reveal} transition={{ duration: .9, delay: .12, ease }} className="about-copy"><p className="lead-copy">Chris Delgado es fotógrafo y filmmaker. Su trabajo encuentra belleza en lo esencial: una mirada, una textura, una luz que dura un segundo.</p><p className="body-copy">Esta es una primera mirada a su universo visual. Una forma de contar historias con calma, sensibilidad y una estética que se reconoce sin necesidad de exagerar.</p><button className="text-link" onClick={() => goTo('works')}>Ver trabajos <ArrowUpRight size={15} strokeWidth={1.2} /></button></motion.div></div>
-        <motion.div {...reveal} transition={{ duration: 1, delay: .16, ease }} className="about-images"><div className="about-image about-image-main"><img loading="lazy" src="/images/chris-portrait-demo.png" alt="Retrato editorial de un fotógrafo con su cámara" /></div><div className="about-image about-image-detail"><img loading="lazy" src="/images/detail-editorial.png" alt="Detalle de dos manos junto a una ventana" /></div><p className="side-note">El gesto.<br />La pausa.<br />Lo que queda.</p></motion.div>
+        <motion.div {...reveal} transition={{ duration: 1, delay: .16, ease }} className="about-images"><div className="about-image about-image-main"><img loading="lazy" src={imagePath('chris-portrait-demo.png')} alt="Retrato editorial de un fotógrafo con su cámara" /></div><div className="about-image about-image-detail"><img loading="lazy" src={imagePath('detail-editorial.png')} alt="Detalle de dos manos junto a una ventana" /></div><p className="side-note">El gesto.<br />La pausa.<br />Lo que queda.</p></motion.div>
       </div></section>
 
       <section id="works" className="works-section section-pad"><div className="container">
