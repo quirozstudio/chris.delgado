@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# Reference screenshots supplied for visual direction; not site assets.
+66e472e4b584c3b784fa8bf183d9796c.jpg
+847f7b8709caa7b4fab4f401b9f7fd4a.jpg
+8514bb31201c6b2fcc3e4ee37f464b55.jpg
+b1af7012e3369620efa58978365e76ca.jpg
